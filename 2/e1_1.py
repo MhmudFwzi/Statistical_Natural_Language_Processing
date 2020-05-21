@@ -34,11 +34,8 @@ def process_language(language,with_limit = False,limit = 0):
                                 dictionary[word] = dictionary[word] + 1
                             else: dictionary[word] = 1                    
     dic_final = sorted(dictionary.items(), key=lambda x: x[1], reverse=True)
-                                #___________________export corpus for testing if needed__________________
-    #corpus = open(language+"_corpus.txt","w+")
-    # for key in dic_final:
-    #     corpus.write(key[0] + "\t" + str(key[1]) + "\n")
-    # corpus.close()
+    if(with_limit):
+        return dic_final
     print(language + " ~~~~ Top 10 ~~~~")
     avg_length = 0
     for i in range(10):
