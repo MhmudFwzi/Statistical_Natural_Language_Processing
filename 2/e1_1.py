@@ -14,20 +14,25 @@ def numberSpecialFree(word):
         return False
     return not any(word.isdigit() for char in word)
 
-def process_language(language):
+def process_language(language,with_limit = False,limit = 0):
     dir = "dataset/" +language+"/"
     dictionary = {}
+    token_count = 0
     for filename in os.listdir(dir):
         if filename.endswith(".txt"): 
             with open(dir + filename,'r') as file:     
                 for line in file:
                     new_line = removePunctuation(line)
                     for word in new_line.split():
+                        if(with_limit and token_count == limit):
+                            dic_final = sorted(dictionary.items(), key=lambda x: x[1], reverse=True)
+                            return dic_final
                         if(numberSpecialFree(word)):
                             word = word.lower()
+                            token_count = token_count + 1
                             if(word in dictionary):
                                 dictionary[word] = dictionary[word] + 1
-                            else: dictionary[word] = 1                       
+                            else: dictionary[word] = 1                    
     dic_final = sorted(dictionary.items(), key=lambda x: x[1], reverse=True)
                                 #___________________export corpus for testing if needed__________________
     #corpus = open(language+"_corpus.txt","w+")
@@ -47,12 +52,3 @@ def process_language(language):
         avg_length = avg_length + len(dic_final[i][0])
         i = i-1
     print("~~~~ Average Length of Words with Lowest Rank is " + str(avg_length/(j-i)) + " ~~~~")
-
-process_language("de")
-process_language("en")
-process_language("es")
-process_language("hu")
-process_language("tr")
-
-print("The difference between the two averages in all languages complies with the fact that language behaves in compliance")
-print("with Statistics. Words with higher average length are less probable to be said or used statistically")
