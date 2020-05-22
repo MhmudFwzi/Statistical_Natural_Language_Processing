@@ -51,6 +51,9 @@ for i in range(27):
 
 decrypted = ""
 
+print(en_map)
+print(cipher_map)
+
 with open("ct/Cipher.txt",'r') as file:
     for line in file:
         for i in line:
