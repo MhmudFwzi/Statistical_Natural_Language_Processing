@@ -9,3 +9,4 @@ print("The difference between the two averages in all languages complies with th
 print("with Statistics. Words with higher average length are less probable to be said or used statistically")
 exec(open("e1_2.py").read())
 exec(open("e2_1.py").read())
+exec(open("e2_2.py").read())

@@ -12,6 +12,8 @@ def plot_corpus(corpus,language):
         y_values.append(corpus[i][1])
     plt.xscale("log")
     plt.yscale("log")
+    plt.xlabel("Rank")
+    plt.ylabel("Frequency")
     plt.plot(x_values,y_values,label = language)
     plt.legend()
 
@@ -28,6 +30,6 @@ plot_corpus(hu_corpus,"hu")
 plot_corpus(tr_corpus,"tr")
 plt.savefig("e1_2.png")
 
-print("check e1_2.png generated, the variation in the curves is due to...")
+print("check e1_2.png generated, the variation in the curves is due to")
 
 
